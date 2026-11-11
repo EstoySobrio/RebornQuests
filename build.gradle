@@ -1,0 +1,61 @@
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net/' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+version = '1.1.3'
+group = 'dev.sobrio'
+archivesBaseName = 'RebornQuests'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+compileJava {
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+    options.encoding = 'UTF-8'
+}
+
+minecraft {
+    version = '1.12.2-14.23.5.2847'
+    mappings = 'stable_39'
+    runDir = 'run'
+    makeObfSourceJar = false
+    replaceIn 'RebornQuests.java'
+    replace '@VERSION@', project.version
+}
+
+repositories {
+    maven { url = 'https://maven.minecraftforge.net/' }
+    mavenCentral()
+}
+
+dependencies {
+    // Custom NPCs only supplies the quest API signatures; the server always runs its own copy.
+    compileOnly files('libs/customnpcs.jar')
+}
+
+processResources {
+    inputs.property 'version', project.version
+    inputs.property 'mcversion', project.minecraft.version
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand 'version': project.version, 'mcversion': project.minecraft.version
+    }
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+    rename '(.+_at.cfg)', 'META-INF/$1'
+}
+
+jar {
+    manifest {
+        attributes('ModSide': 'BOTH', 'ForceLoadAsMod': 'true')
+    }
+}

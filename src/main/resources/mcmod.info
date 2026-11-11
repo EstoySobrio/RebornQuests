@@ -1,0 +1,20 @@
+[
+  {
+    "modid": "rebornquests",
+    "name": "RebornQuests",
+    "description": "Tablon de misiones para Forge 1.12.2. Las misiones se leen de Custom NPCs y el rango sale de los grupos de LuckPerms.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": [
+      "Sobrio"
+    ],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": [
+      "CustomNPCs"
+    ]
+  }
+]

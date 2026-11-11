@@ -1,0 +1,28 @@
+# Compilados y caches
+build/
+out/
+.gradle/
+
+# Dependencias de terceros (no se redistribuyen)
+libs/
+
+# Jars sueltos y jars apartados
+*.jar
+*.jar.off
+
+# Ejecucion / logs
+run/
+logs/
+*.log
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
